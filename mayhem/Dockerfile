@@ -9,8 +9,8 @@ RUN go get github.com/dvyukov/go-fuzz/go-fuzz-dep
 RUN apt update && apt install -y clang
 
 
-RUN go-fuzz-build -libfuzzer -o fuzz.a && \
-    clang -fsanitize=fuzzer fuzz.a -o fuzz.libfuzzer
+RUN go-fuzz-build -libfuzzer -o fuzzExpression.a && \
+    clang -fsanitize=fuzzer fuzzExpression.a -o fuzzExpression.libfuzzer
 
 FROM debian:bookworm-slim
-COPY --from=builder /terraform-json/mayhem/fuzz.libfuzzer /
+COPY --from=builder /terraform-json/mayhem/fuzzExpression.libfuzzer /

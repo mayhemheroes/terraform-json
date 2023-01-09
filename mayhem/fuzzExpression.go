@@ -1,4 +1,4 @@
-package fuzz
+package fuzzExpression
 
 import "github.com/hashicorp/terraform-json"
 
